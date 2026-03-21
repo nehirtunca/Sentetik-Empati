@@ -1,0 +1,79 @@
+# Sentetik Empati - Tech Stack ve Teknik Kararlar
+
+Bu doküman, MVP'yi hızlı ve sürdürülebilir şekilde hayata geçirmek için seçilen teknolojileri ve nedenlerini açıklar.
+
+## 1) Temel Teknoloji Seçimi
+
+### Frontend Framework
+- **Next.js (App Router)**
+- Neden:
+  - Dosya tabanlı routing ile sade mimari
+  - Server Components ve API route desteği
+  - Üretime geçişte güçlü ekosistem (Vercel uyumu)
+
+### Dil
+- **TypeScript**
+- Neden:
+  - Geliştirme sırasında tip güvenliği
+  - Hata oranını azaltma
+  - Cursor/IDE ile daha iyi otomatik tamamlama
+
+### Stil Sistemi
+- **Tailwind CSS**
+- Neden:
+  - Hızlı prototipleme
+  - Tek dosyada düzenli UI geliştirme
+  - Minimalist/pastel tasarımı kolayca yönetebilme
+
+## 2) AI Katmanı
+
+### Metin ve Şiir Üretimi
+- **Google Gemini API**
+- Kullanım:
+  - Kullanıcı hikayesinden duygu analizi
+  - 4-6 mısralık şiir üretimi
+
+### Görsel Üretimi
+- **Gemini Image Generation** veya **DALL-E 3** (aşama 2 kararı)
+- Kullanım:
+  - Şiir ve duygu tonuna uygun soyut görsel üretimi
+
+## 3) Uygulama Mimarisi (MVP)
+
+- `app/page.tsx`: Ana sayfa ve kullanıcı akışı
+- `app/layout.tsx`: Global layout, font, metadata
+- `app/globals.css`: Global stiller + pastel tema değişkenleri
+- `app/api/...`: Şiir ve görsel üretim endpoint'leri (server-side)
+- `.env.local`: API anahtarları (repo'ya eklenmez)
+
+## 4) Geliştirme Araçları
+
+- **Paket Yöneticisi:** npm
+- **Lint:** ESLint (Next.js varsayılan)
+- **Format (opsiyonel):** Prettier
+- **IDE:** Cursor
+- **Versiyon Kontrol:** Git + GitHub
+
+## 5) Dağıtım (Deploy)
+
+- **Önerilen:** Vercel (Next.js için doğal tercih)
+- **Alternatif:** Netlify
+
+Deploy sonrası kontrol:
+- Ana sayfa açılıyor mu?
+- Şiir üretim endpoint'i çalışıyor mu?
+- Ortam değişkenleri doğru tanımlı mı?
+
+## 6) Tasarım İlkeleri (UI/UX)
+
+- Tek sayfalık, dikkat dağıtmayan deneyim
+- Pastel renkler ve yumuşak geçişler
+- Duygusal derinliği destekleyen tipografi ve boşluk kullanımı
+- Mobil uyumlu (responsive) yapı
+
+## 7) Güvenlik ve Gizlilik
+
+- API anahtarları yalnızca server-side erişimde kullanılmalı
+- `.env.local` dosyası sürüm kontrolüne alınmamalı
+- Kullanıcıya kişisel veri paylaşmaması için kısa uyarı gösterilmeli
+Bu proje, bir mühendislik öğrencisinin kod derinliklerinde kaybolmadan, yapay zekanın gücünü kullanarak hızlıca çalışan bir prototip (MVP) çıkarması için tasarlanmıştır.1. Önerilen Teknoloji ListesiFrontend (Arayüz): React + Tailwind CSS (Lovable üzerinden).Yapay Zeka (Zeka Katmanı): Google Gemini API (Google AI Studio üzerinden).Kod Editörü: Cursor AI (Agent Modu aktif).Yayınlama (Deploy): Lovable veya Netlify.Versiyon Kontrol: GitHub.2. Neden Bu Teknolojileri Seçiyoruz?React & Tailwind: Modern web uygulamaları için standarttır. Lovable ve Cursor bu dilleri mükemmel anlar, tasarımda değişiklik yapmak "Buton rengini mavi yap" demek kadar kolaydır.Gemini API: Hem metin (şiir) hem de görsel analizi konusunda çok güçlüdür. Google AI Studio üzerinden API anahtarı almak tamamen ücretsiz ve çok hızlıdır.Lovable: GitHub reponu bağladığın anda uygulamanı saniyeler içinde internete taşır. Karmaşık sunucu ayarlarıyla uğraşmanı engeller.Cursor Agent Modu: Sen sadece ne istediğini söylersin, o senin yerine dosyaları oluşturur ve API bağlantılarını yapar.3. Kurulum AdımlarıAPI Anahtarını Tanımla: Google AI Studio'dan aldığın API anahtarını Cursor içerisinde .env isimli bir dosyada saklayacağız (Cursor bunu senin için yapabilir).Cursor Ayarları: Cursor'da File -> Preferences -> Cursor Settings kısmına giderek Gemini modelinin seçili olduğundan emin ol.Temel Klasör Yapısı: Cursor'a "PRD ve Tasks dosyalarıma göre temel React projesini oluştur" komutunu ver.GitHub Bağlantısı: Bilgisayarındaki yerel klasörü GitHub repona bağla (Bu işlemi terminalden git push komutlarıyla yapacağız).Lovable Yayını: lovable.dev adresine gidip GitHub reponu seçerek "Deploy" butonuna bas.

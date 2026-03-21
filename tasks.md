@@ -1,0 +1,226 @@
+# Sentetik Empati - Uygulama Görev Planı
+
+Bu doküman, `prd.md` hedeflerine göre planlama aşamasından uygulamaya geçiş için net bir iş kırılımı sunar.
+
+## Proje Hedefi (MVP)
+- Kullanıcının paylaştığı hikayeden AI ile anlamlı bir şiir üretmek.
+- Şiirle uyumlu soyut bir görsel üretmek.
+- Tüm süreci tek sayfada, sakin ve minimalist deneyimle sunmak.
+- Uçtan uca ortalama tamamlanma süresini 15 saniye altında tutmak.
+
+## Task 1 - Project Setup (Proje Kurulumu)
+**Amaç:** Next.js App Router + TypeScript + Tailwind CSS ile temel proje iskeletini kurmak.
+
+### 1.1 Ortam Hazırlığı
+- [ ] Node.js LTS ve npm sürümlerini doğrula
+- [ ] Proje klasöründe Next.js uygulamasını başlat
+- [ ] App Router yapısını doğrula (`app` klasörü)
+
+### 1.2 Stil ve Tasarım Temeli
+- [ ] Tailwind CSS yapılandırmasını kontrol et
+- [ ] Global pastel renk değişkenlerini tanımla
+- [ ] Temel tipografi ve spacing ölçeklerini belirle
+
+### 1.3 Ana Sayfa İskeleti
+- [ ] Hero başlığı ve kısa açıklama
+- [ ] Hikaye girdi alanı (textarea)
+- [ ] Birincil CTA butonu (`Dönüştür ve Hisset`)
+- [ ] Sonuç alanı (sol: şiir, sağ: görsel placeholder)
+- [ ] İşleme (loading) durumu için yer tutucu
+
+### 1.4 Kalite Kontrol
+- [ ] `npm run lint` hatasız çalışmalı
+- [ ] `npm run dev` ile sayfa açılmalı
+- [ ] Mobil ve masaüstünde temel responsive yapı çalışmalı
+
+**Çıktı:** Uygulamanın statik ama çalışır bir ana sayfası hazır olmalı.
+
+---
+
+## Task 2 - Text MVP (Şiir Üretimi)
+**Amaç:** Kullanıcı metninden 4-6 mısralık şiir üretimini çalışır hale getirmek.
+
+### 2.1 API Hazırlığı
+- [ ] Gemini API anahtarını `.env.local` dosyasına ekle
+- [ ] Server-side API route oluştur (`/api/poem`)
+- [ ] Prompt şablonunu sabitle (yalnızca şiir çıktısı)
+
+### 2.2 Arayüz Entegrasyonu
+- [ ] Form submit ile API çağrısı yap
+- [ ] Loading durum metinleri göster
+- [ ] Şiir çıktısını sonuç paneline bas
+
+### 2.3 Hata Yönetimi
+- [ ] Boş metin gönderiminde kullanıcı uyarısı
+- [ ] API hatasında nazik geri bildirim mesajı
+
+**Çıktı:** Kullanıcıdan alınan metinle güvenilir şiir üretimi.
+
+---
+
+## Task 3 - Görsel Üretim (Aşama 2)
+**Amaç:** Şiir ve duygu tonuna uyumlu soyut görsel üretmek.
+
+### 3.1 Görsel Prompt Üretimi
+- [ ] Duygu etiketi ve anahtar kelime çıkarımı
+- [ ] Görsel modeline uygun prompt standardı
+
+### 3.2 Görsel API Entegrasyonu
+- [ ] Seçilen model ile görsel üretim endpoint'i
+- [ ] Sonuç panelinde görsel gösterimi
+
+### 3.3 Fallback Senaryoları
+- [ ] Görsel üretimi başarısızsa şiir yine gösterilsin
+- [ ] Kullanıcıya tekrar deneme mesajı verilsin
+
+**Çıktı:** Şiir + görsel birlikte üretilebilen çıktı kartı.
+
+---
+
+## Task 4 - Etkileşim Özellikleri
+**Amaç:** Üretilen sonucun paylaşılabilir ve indirilebilir olması.
+
+- [ ] `Resmi İndir` fonksiyonu
+- [ ] `Farkındalık Yarat` paylaşım akışı (Web Share / kopyalama)
+- [ ] Paylaşım metni şablonu
+
+**Çıktı:** Kullanıcı çıktıyı dış platformlara taşıyabilmeli.
+
+---
+
+## Task 5 - Performans, Güvenlik ve Yayınlama
+**Amaç:** MVP'yi stabil ve erişilebilir şekilde yayına almak.
+
+### 5.1 Performans
+- [ ] Ortalama işlem süresi ölçümü
+- [ ] Gereksiz API çağrılarının azaltılması
+
+### 5.2 Güvenlik ve İçerik
+- [ ] API anahtarının güvenli saklanması
+- [ ] Kişisel veri paylaşımına karşı kullanıcı uyarısı
+
+### 5.3 Deploy
+- [ ] Vercel/Netlify yayını
+- [ ] Canlı URL üzerinden temel kabul testleri
+
+**Çıktı:** Public erişilebilir, temel kullanım senaryoları çalışan MVP.
+
+---
+
+## Definition of Done (MVP)
+- [ ] Kullanıcı hikaye girer ve tek tıkla dönüşümü başlatır
+- [ ] 4-6 mısralık anlamlı şiir üretilir
+- [ ] Şiirle uyumlu soyut görsel gösterilir
+- [ ] İndir/paylaş seçenekleri çalışır
+- [ ] Uygulama canlı URL'de erişilebilir olur
+# Sentetik Empati - Görev Listesi (Adım Adım)
+
+PRD hedefi: Kullanıcının yazdığı hikayeyi **4-6 mısralık Türkçe şiire** dönüştürmek ve ardından şiirle uyumlu **soyut bir tablo/görsel** üretmek (uçtan uca < 15 sn).
+
+> Not: Kod yazmayı bilmeyen biri için görevler, “hazır platformlarda (Lovable vb.) kurulum + doğru prompt + test” odağında tutulmuştur.
+
+## A. Hazırlık (Proje açılır/çalışır hale gelsin)
+1. **Proje ortamını seç**
+   - Seçim: `Lovable (React) + Gemini API` doğrultusunda ilerle.
+   - Teslim: Tek sayfalık uygulama taslağı açılmış olsun (UI iskeleti).
+2. **Google AI Studio hesabı ve proje oluştur**
+   - Teslim: `Gemini API` erişimi için hazır proje oluşturuldu.
+3. **API anahtarı (key) al**
+   - Teslim: Gemini için bir API key oluşturuldu.
+   - Güvenlik: Key’i public repo / herkese açık ortama koyma.
+4. **Prompt stratejisi belirle**
+   - Teslim: “şiir üret” ve “görsel promptu üret” için ayrı talimatlar yazıldı.
+
+## B. Aşama 1 (Text-only MVP): Şiir üretimi çalışsın
+1. **Tek ekran UX kur**
+   - Bileşenler:
+     - `Metin Kutusu` (kullanıcının hikayesini yazacağı alan)
+     - Buton: `Dönüştür ve Hisset`
+     - `Processing` durumu (yumuşak yükleme animasyonu / spinner + metin)
+     - `Output` alanı: sol kısımda şiir
+     - Sağ kısım geçici: “Görsel aşama 2’de”
+   - Kabul kriteri: Butona basınca “processing” durumu görünmeli.
+2. **Gemini çağrısını yalnızca şiir üretime bağla**
+   - Model: Gemini (metin/akış)
+   - İş akışı:
+     - Kullanıcı metnini al
+     - Gemini’ye gönder
+     - Sadece şiiri al ve ekrana bas
+   - Kabul kriteri: Aynı giriş için tutarlı biçimde 4-6 mısra üretilmeli.
+3. **Şiir promptunu sabitle (çıktı formatı)**
+   - İstenen çıktı (örnek):
+     - 4-6 mısra Türkçe şiir
+     - Aşırı açıklama yok, sadece şiir (tercihen başlık olmadan)
+   - Kabul kriteri: Çıktı her seferinde şiir formatında gelsin (ek açıklama/metadata yok).
+4. **Hata ve boş veri senaryolarını yönet**
+   - Senaryolar:
+     - Kullanıcı boş gönderirse: uyarı
+     - API hatası olursa: “Şu an dönüştürme başarısız” + tekrar dene
+   - Kabul kriteri: Ekran çökmeden kullanıcı bilgilendirilsin.
+5. **Mini kalite kontrol**
+   - 10 farklı hikaye girdisiyle dene.
+   - Kabul kriteri:
+     - Şiir dili duygusal ve lirİk olsun
+     - Kişisel hassas verileri (isim/telefon vb.) taklit etmesin
+
+## C. Aşama 2 (Görsel): Şiirle uyumlu soyut tablo oluşsun
+1. **Duygu/anahtar kelime çıkarımı adımı**
+   - İş akışı opsiyonu:
+     - (1) Gemini’den şiir üret
+     - (2) Gemini’den aynı metinden `duygu etiketi + anahtar kelimeler` al
+   - Kabul kriteri: Görsel promptu için kullanılacak 3-8 anahtar kelime çıkarılsın.
+2. **Görsel promptu üret**
+   - İstenen: Şiir + duygu etiketi + anahtar kelimeleri kullanarak DALL-E / Gemini Image için net komut
+   - Kabul kriteri: Prompt her seferinde “stil + renk paleti + kompozisyon + soyut ifade” içersin.
+3. **Görsel üretim API’yi bağla**
+   - Seçim: `DALL-E 3` veya `Gemini Image Generation`
+   - İş akışı:
+     - Gemini promptu hazırla
+     - Görsel üret
+     - Output sağ tarafa görseli bas
+   - Kabul kriteri: Görsel ekranda görünür (loading sonrası).
+4. **Çıktı uyumunu kontrol et**
+   - Kabul kriteri: 10 testte şiir tonu ile görsel tonu belirgin uyumlu olsun.
+5. **Üretim başarısız olursa fallback**
+   - Senaryo: image API başarısız
+   - Kabul kriteri: Şiir yine görünsün, görsel yerine “Daha sonra tekrar dene” mesajı çıksın.
+
+## D. İşlevler: İndir / Paylaş
+1. **“Resmi İndir” butonu**
+   - Kabul kriteri: Görsel gerçek boyutta indirilebilir olsun.
+2. **“Farkındalık Yarat (Paylaş)”**
+   - Minimum sürüm:
+     - Paylaşım metni oluştur (şiir + kısa mesaj)
+     - Paylaşılabilir bağlantı veya kopyala-yapıştır metni
+   - Kabul kriteri: Kullanıcı tek tıkla paylaşım başlatabilsin.
+
+## E. Performans ve 15 saniye hedefi
+1. **Zamanlama planı**
+   - Hedef: text generation + image generation süreçlerinin toplamı < 15 sn
+   - Kabul kriteri: Processing durumu gerçek zamanlı görünür; uzun beklemeler “makul” mesajlarla yönetilir.
+2. **Basit optimizasyon**
+   - Kabul kriteri: Gereksiz tekrar çağrılar olmasın.
+   - (İmkan varsa) görsel üretimi için çözünürlük/parametreler optimize edilsin.
+
+## F. Güvenlik, etik ve içerik politikası (kısa MVP)
+1. **Hassas içerik yönergeleri**
+   - Kabul kriteri:
+     - İsim/telefon/konum gibi kişisel veriler çıkarmamaya yönelik prompt kuralı olsun
+     - Aşırı grafik şiddet/zarar yönlendirmesi olmasın
+2. **Kullanıcı uyarısı metni**
+   - Kabul kriteri: Uygulama içinde “Kişisel bilgi paylaşma” benzeri kısa uyarı görüntülensin.
+
+## G. Yayınlama (Hosting)
+1. **Netlify veya Lovable deploy**
+   - Kabul kriteri: Uygulama public URL üzerinden açılır.
+2. **Ortam değişkenleri (env)**
+   - Kabul kriteri: API key yalnızca server-side/proper env ile kullanılsın.
+
+## H. Tamamlama Tanımı (Definition of Done)
+- Kullanıcı hikaye girer
+- `Dönüştür ve Hisset` ile:
+  - 4-6 mısralık şiir üretilir
+  - Shiir ile uyumlu soyut görsel oluşur
+  - Süre toplamı pratikte 15 saniyeyi aşmaz (ortalama testlerde)
+- İndir ve paylaş işlevleri çalışır
+- Uygulama deploy edilir ve public olarak test edilebilir
